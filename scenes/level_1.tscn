@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://bjmtb63ibwnxq"]
+
+[ext_resource type="PackedScene" uid="uid://cqvhrb0vpd3u2" path="res://scenes/player.tscn" id="1_0j6rc"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="2_tukm6"]
+
+[node name="level 1" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2(2, 0)
+polygon = PackedVector2Array(-2335, -169, -220, 188, 1516, 200, 3047, 601, 3898, 613, 4953, 349, 6194, 245, 8080, 425, 9750, 317, 12211, -707, 14635, -2682, 17848, -5031, 21578, -7086, 24622, -7543, 27210, -7353, 30102, -5336, 31548, -3319, 35061, -854, 42579, -372, 45805, -473, 91975, -592, 93242, 18505, -8400, 16423)
+
+[node name="player" parent="." instance=ExtResource("1_0j6rc")]
+position = Vector2(-724, -1717)
+mass = 25.0
+script = ExtResource("2_tukm6")
+
+[node name="Camera2D" type="Camera2D" parent="player"]
+position = Vector2(-13, 13)
+offset = Vector2(200, 0)
+zoom = Vector2(0.5, 0.5)

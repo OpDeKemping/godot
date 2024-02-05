@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://cqvhrb0vpd3u2"]
+
+[ext_resource type="PackedScene" uid="uid://c76i4pic1ppdq" path="res://scenes/wheel.tscn" id="1_io1sp"]
+[ext_resource type="Texture2D" uid="uid://dxiye2y0th63p" path="res://car-icon-png-22.png" id="2_7fpc3"]
+
+[node name="player" type="RigidBody2D"]
+mass = 51.9
+
+[node name="wheelholder" type="PinJoint2D" parent="."]
+position = Vector2(-82, 122)
+node_a = NodePath("..")
+node_b = NodePath("wheel")
+softness = 0.4
+
+[node name="wheel" parent="wheelholder" instance=ExtResource("1_io1sp")]
+
+[node name="wheelholder2" type="PinJoint2D" parent="."]
+position = Vector2(81, 120)
+node_a = NodePath("..")
+node_b = NodePath("wheel")
+softness = 0.4
+
+[node name="wheel" parent="wheelholder2" instance=ExtResource("1_io1sp")]
+
+[node name="car" type="Sprite2D" parent="."]
+texture = ExtResource("2_7fpc3")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-69, -24, -117, 36, -159, 39, -158, 120, -123, 123, -81, 99, -40, 121, 36, 123, 79, 98, 123, 121, 157, 121, 160, 80, 146, 55, 121, 41, 86, 35, 37, -24)
