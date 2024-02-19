@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://dapy4l48qrwfr"]
+
+[ext_resource type="PackedScene" uid="uid://cqvhrb0vpd3u2" path="res://scenes/player.tscn" id="1_c7h8v"]
+[ext_resource type="Script" path="res://scenes/player_2.gd" id="2_cmb6t"]
+[ext_resource type="Texture2D" uid="uid://cbk3gx22ygnss" path="res://motor2.png" id="2_tcga4"]
+
+[node name="player2" instance=ExtResource("1_c7h8v")]
+mass = 25.0
+script = ExtResource("2_cmb6t")
+
+[node name="wheelholder" parent="." index="0"]
+position = Vector2(-83, 111)
+
+[node name="wheelholder2" parent="." index="1"]
+position = Vector2(99, 110)
+
+[node name="car" parent="." index="2"]
+position = Vector2(12, 66)
+texture = ExtResource("2_tcga4")
+
+[node name="CollisionPolygon2D" parent="." index="3"]
+position = Vector2(58, -14)
+polygon = PackedVector2Array(-94, 45, -166, 51, -100, 98, -142, 131, -120, 123, -76, 112, -60, 134, -24, 127, 5, 79, 47, 116, 27, 76, 75, 73, 62, 56, 28, 56, -9, 12, -59, 55)

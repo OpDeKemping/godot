@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://dfv0eufnviska"]
+
+[ext_resource type="PackedScene" uid="uid://b85h3b84nwlsu" path="res://scenes/player_3.tscn" id="1_1k3qf"]
+[ext_resource type="Script" path="res://scenes/player_4.gd" id="2_oc0rl"]
+[ext_resource type="Texture2D" uid="uid://nfnicdo61lm0" path="res://laatste auto 4.png" id="3_4xisf"]
+
+[node name="player4" instance=ExtResource("1_1k3qf")]
+mass = 55.0
+script = ExtResource("2_oc0rl")
+
+[node name="wheelholder" parent="." index="0"]
+position = Vector2(-85, 151)
+
+[node name="wheelholder2" parent="." index="1"]
+position = Vector2(176, 147)
+
+[node name="car" parent="." index="2"]
+position = Vector2(44, 107)
+texture = ExtResource("3_4xisf")
+
+[node name="CollisionPolygon2D" parent="." index="3"]
+position = Vector2(-5, -52)
+polygon = PackedVector2Array(-82, 61, -127, 83, -173, 123, -185, 154, -141, 187, -76, 131, -36, 187, 47, 185, 141, 184, 179, 150, 235, 184, 281, 168, 279, 142, 247, 112, 131, 108, 50, 63)
