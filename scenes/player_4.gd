@@ -2,6 +2,8 @@ extends RigidBody2D
 
 
 var wheels = []
+var dead = false
+
 
 var speed = 60000 
 var altspeed = -60000
@@ -25,5 +27,10 @@ func _physics_process(delta):
 		for wheels in wheels:
 			if wheels.angular_velocity < altmaxspeed:
 				wheels.apply_torque_impulse(altspeed*delta*60)
+				
+	if Input.is_action_pressed("ui_text_backspace") :
+		get_tree().reload_current_scene()
 
+	if Input.is_action_pressed("ui_text_delete") :
+		get_tree().change_scene_to_file("res://scenes/control.tscn")
 

@@ -1,23 +1,83 @@
-[gd_scene load_steps=4 format=3 uid="uid://dfv0eufnviska"]
+[gd_scene load_steps=8 format=3 uid="uid://dqdwnhmft460i"]
 
-[ext_resource type="PackedScene" uid="uid://b85h3b84nwlsu" path="res://scenes/player_3.tscn" id="1_1k3qf"]
 [ext_resource type="Script" path="res://scenes/player_4.gd" id="2_oc0rl"]
+[ext_resource type="PackedScene" uid="uid://c76i4pic1ppdq" path="res://scenes/wheel.tscn" id="2_shclu"]
 [ext_resource type="Texture2D" uid="uid://nfnicdo61lm0" path="res://laatste auto 4.png" id="3_4xisf"]
 
-[node name="player4" instance=ExtResource("1_1k3qf")]
-mass = 55.0
+[sub_resource type="Gradient" id="Gradient_5br67"]
+offsets = PackedFloat32Array(0, 0.558442, 0.61039)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_4uatl"]
+gradient = SubResource("Gradient_5br67")
+width = 3400
+height = 3000
+fill = 1
+fill_from = Vector2(0.495413, 0.490826)
+
+[sub_resource type="Gradient" id="Gradient_8rgq0"]
+offsets = PackedFloat32Array(0, 0.623377)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_4sjrb"]
+gradient = SubResource("Gradient_8rgq0")
+width = 6000
+height = 2000
+use_hdr = true
+fill = 1
+fill_from = Vector2(0.463303, 0.495413)
+
+[node name="player4" type="RigidBody2D"]
+position = Vector2(-5, 5)
+mass = 80.0
+center_of_mass_mode = 1
+center_of_mass = Vector2(50, 100)
 script = ExtResource("2_oc0rl")
 
-[node name="wheelholder" parent="." index="0"]
-position = Vector2(-85, 151)
+[node name="wheelholder2" type="PinJoint2D" parent="."]
+position = Vector2(177, 147)
+scale = Vector2(0.335473, 0.32888)
+node_a = NodePath("..")
+node_b = NodePath("wheel")
+softness = 0.1
 
-[node name="wheelholder2" parent="." index="1"]
-position = Vector2(176, 147)
+[node name="wheel" parent="wheelholder2" instance=ExtResource("2_shclu")]
+position = Vector2(-6.10352e-05, -6.10352e-05)
+scale = Vector2(2.98087, 3.04062)
 
-[node name="car" parent="." index="2"]
+[node name="wheelholder" type="PinJoint2D" parent="."]
+position = Vector2(-86, 149)
+scale = Vector2(0.335473, 0.32888)
+node_a = NodePath("..")
+node_b = NodePath("wheel2")
+softness = 0.1
+
+[node name="wheel2" parent="wheelholder" instance=ExtResource("2_shclu")]
+scale = Vector2(2.98087, 3.04062)
+
+[node name="car" type="Sprite2D" parent="."]
 position = Vector2(44, 107)
+scale = Vector2(0.335473, 0.321678)
 texture = ExtResource("3_4xisf")
 
-[node name="CollisionPolygon2D" parent="." index="3"]
+[node name="PointLight2D" type="PointLight2D" parent="car"]
+position = Vector2(-35.7704, -139.891)
+scale = Vector2(1, 1.02239)
+energy = 1.6
+texture = SubResource("GradientTexture2D_4uatl")
+
+[node name="PointLight2D2" type="PointLight2D" parent="car"]
+scale = Vector2(1.03907, 1)
+energy = 1.6
+texture = SubResource("GradientTexture2D_4sjrb")
+offset = Vector2(3500, 0)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 position = Vector2(-5, -52)
-polygon = PackedVector2Array(-82, 61, -127, 83, -173, 123, -185, 154, -141, 187, -76, 131, -36, 187, 47, 185, 141, 184, 179, 150, 235, 184, 281, 168, 279, 142, 247, 112, 131, 108, 50, 63)
+polygon = PackedVector2Array(-85, 62, -127, 83, -173, 123, -185, 154, -172, 159, -172, 167, -160, 175, -151, 176, -148, 185, -117, 186, -108, 185, -105, 170, -80, 157, -53, 170, -52, 182, -38, 185, 49, 184, 141, 184, 160, 164, 179, 155, 203, 170, 212, 185, 227, 185, 238, 175, 270, 167, 277, 150, 271, 140, 256, 129, 247, 112, 132, 110, 129, 101, 108, 100, 104, 92, 88, 91, 81, 84, 73, 82, 67, 73, 58, 71, 51, 64)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, 1)
+scale = Vector2(0.995997, 0.932568)
+offset = Vector2(200, 0)
+zoom = Vector2(0.5, 0.5)
